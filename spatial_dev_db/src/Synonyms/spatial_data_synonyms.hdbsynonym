@@ -1,0 +1,14 @@
+{
+  "Synonyms::FIRE_BURNINGS": {
+    "target": {
+      "object": "FIRE_BURNINGS",
+      "schema": "SPATIAL_DATA"
+    }
+  },
+  "Synonyms::TRUCK_TRIPS": {
+    "target": {
+      "object": "TRUCK_TRIPS",
+      "schema": "SPATIAL_DATA"
+    }
+  }
+}

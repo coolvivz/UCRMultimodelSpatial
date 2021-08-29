@@ -1,0 +1,13 @@
+{
+  "role": {
+    "name": "Roles::spatial_multimodel_access",
+    "schema_privileges": [
+      {
+        "privileges": [
+          "SELECT",
+          "EXECUTE"
+        ]
+      }
+    ]
+  }
+}

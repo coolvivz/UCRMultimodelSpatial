@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Models::cv_sac_flow" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="cv_sac_flow"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="Views::sac_flow_multi">
+    <resourceUri>Views::sac_flow_multi</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="TRIP_ID"/>
+      <viewAttribute id="STARTID"/>
+      <viewAttribute id="ENDID"/>
+      <viewAttribute id="DISTANCE_M"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="TRIPID_STARTID" datatype="NVARCHAR" length="200" expressionLanguage="SQL">
+        <formula>concat(&quot;TRIP_ID&quot;,&quot;STARTID&quot;)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="TRIPID_ENDID" datatype="NVARCHAR" length="200" expressionLanguage="SQL">
+        <formula>CONCAT(&quot;TRIP_ID&quot;, &quot;ENDID&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="Views::sac_flow_multi"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="TRIPID_STARTID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRIPID_STARTID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="TRIPID_STARTID"/>
+    </attribute>
+    <attribute id="TRIPID_ENDID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRIPID_ENDID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="TRIPID_ENDID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DISTANCE_M" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DISTANCE_M"/>
+      <measureMapping columnObjectName="Projection_1" columnName="DISTANCE_M"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="72" y="208"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
